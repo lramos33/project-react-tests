@@ -11,8 +11,8 @@ describe('Testing About Component', () => {
 
   test('if it contains two paragraphs', () => {
     render(<About />);
-    const firstParagraph = screen.getByText(/This application simulates a Pokédex/i);
-    const secondParagraph = screen.getByText(/One can filter Pokémons by type/i);
+    const firstParagraph = screen.getByText(/this application simulates a pokédex/i);
+    const secondParagraph = screen.getByText(/one can filter pokémons by type/i);
     expect(firstParagraph).toBeInTheDocument();
     expect(secondParagraph).toBeInTheDocument();
   });

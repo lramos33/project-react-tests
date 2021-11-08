@@ -27,8 +27,8 @@ describe('Testing App Component', () => {
     const history = createMemoryHistory();
     render(<Router history={ history }><App /></Router>);
 
-    const aboutLink = screen.getByRole('link', { name: 'Home' });
-    userEvent.click(aboutLink);
+    const homeLink = screen.getByRole('link', { name: 'Home' });
+    userEvent.click(homeLink);
     const { pathname } = history.location;
     expect(pathname).toBe('/');
   });
@@ -47,8 +47,8 @@ describe('Testing App Component', () => {
     const history = createMemoryHistory();
     render(<Router history={ history }><App /></Router>);
 
-    const aboutLink = screen.getByRole('link', { name: 'Favorite Pokémons' });
-    userEvent.click(aboutLink);
+    const favoritePokemonLink = screen.getByRole('link', { name: 'Favorite Pokémons' });
+    userEvent.click(favoritePokemonLink);
     const { pathname } = history.location;
     expect(pathname).toBe('/favorites');
   });
