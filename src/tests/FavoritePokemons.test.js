@@ -19,7 +19,7 @@ describe('Testing FavoritePokemons Component', () => {
 
     const moreDetailsLink = screen.getByRole('link', { name: 'More details' });
     userEvent.click(moreDetailsLink);
-    const favoriteCheckbox = screen.getByRole('checkbox', { name: 'Pokémon favoritado?' })
+    const favoriteCheckbox = screen.getByRole('checkbox', { name: 'Pokémon favoritado?' });
     userEvent.click(favoriteCheckbox);
     const favoritePokemonLink = screen.getByRole('link', { name: 'Favorite Pokémons' });
     userEvent.click(favoritePokemonLink);
