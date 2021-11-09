@@ -5,7 +5,10 @@ import About from '../components/About';
 describe('Testing About Component', () => {
   test('if it contains a heading with text "About Pokédex"', () => {
     render(<About />);
-    const pokedexTitle = screen.getByRole('heading', { name: 'About Pokédex' });
+    const pokedexTitle = screen.getByRole('heading', {
+      level: 2,
+      name: /about pokédex/i,
+    });
     expect(pokedexTitle).toBeInTheDocument();
   });
 
