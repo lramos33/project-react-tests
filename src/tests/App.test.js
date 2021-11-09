@@ -8,12 +8,13 @@ describe('Testing App Component', () => {
   test('if header has all the links', () => {
     renderWithRouter(<App />);
 
+    const allLinks = screen.getAllByRole('link');
     const homeLink = screen.getByRole('link', { name: 'Home' });
     const aboutLink = screen.getByRole('link', { name: 'About' });
     const favoritePokemonsLink = screen.getByRole('link', { name: 'Favorite Pokémons' });
-    expect(homeLink).toBeInTheDocument();
-    expect(aboutLink).toBeInTheDocument();
-    expect(favoritePokemonsLink).toBeInTheDocument();
+    expect(homeLink).toBe(allLinks[0]);
+    expect(aboutLink).toBe(allLinks[1]);
+    expect(favoritePokemonsLink).toBe(allLinks[2]);
   });
 
   test('if clicking on "Home" redirects to pathname "/"', () => {
