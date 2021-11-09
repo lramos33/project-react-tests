@@ -1,19 +1,12 @@
 import React from 'react';
-import { Router } from 'react-router-dom';
-import { render, screen } from '@testing-library/react';
-import { createMemoryHistory } from 'history';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import renderWithRouter from './renderWithRouter';
 import App from '../App';
 
 describe('Testing App Component', () => {
-  // beforeEach(() => {
-  //   const history = createMemoryHistory();
-  //   render(<Router history={ history }><App /></Router>);
-  // });
-
   test('if header has all the links', () => {
-    const history = createMemoryHistory();
-    render(<Router history={ history }><App /></Router>);
+    renderWithRouter(<App />);
 
     const homeLink = screen.getByRole('link', { name: 'Home' });
     const aboutLink = screen.getByRole('link', { name: 'About' });
@@ -24,9 +17,7 @@ describe('Testing App Component', () => {
   });
 
   test('if clicking on "Home" redirects to pathname "/"', () => {
-    const history = createMemoryHistory();
-    render(<Router history={ history }><App /></Router>);
-
+    const { history } = renderWithRouter(<App />);
     const homeLink = screen.getByRole('link', { name: 'Home' });
     userEvent.click(homeLink);
     const { pathname } = history.location;
@@ -34,9 +25,7 @@ describe('Testing App Component', () => {
   });
 
   test('if clicking on "About" redirects to pathname "/about"', () => {
-    const history = createMemoryHistory();
-    render(<Router history={ history }><App /></Router>);
-
+    const { history } = renderWithRouter(<App />);
     const aboutLink = screen.getByRole('link', { name: 'About' });
     userEvent.click(aboutLink);
     const { pathname } = history.location;
@@ -44,9 +33,7 @@ describe('Testing App Component', () => {
   });
 
   test('if clicking on "Favorite Pokémons" redirects to pathname "/favorites"', () => {
-    const history = createMemoryHistory();
-    render(<Router history={ history }><App /></Router>);
-
+    const { history } = renderWithRouter(<App />);
     const favoritePokemonLink = screen.getByRole('link', { name: 'Favorite Pokémons' });
     userEvent.click(favoritePokemonLink);
     const { pathname } = history.location;
@@ -54,9 +41,7 @@ describe('Testing App Component', () => {
   });
 
   test('if it redirects to a "Not Found" page', () => {
-    const history = createMemoryHistory();
-    render(<Router history={ history }><App /></Router>);
-
+    const { history } = renderWithRouter(<App />);
     history.push('/invented-url');
     const notFoundTitle = screen.getByRole('heading',
       { name: 'Page requested not found Crying emoji' });

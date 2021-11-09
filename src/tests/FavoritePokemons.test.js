@@ -1,9 +1,8 @@
 import React from 'react';
-import { Router } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
-import { createMemoryHistory } from 'history';
 import userEvent from '@testing-library/user-event';
 import FavoritePokemons from '../components/FavoritePokemons';
+import renderWithRouter from './renderWithRouter';
 import App from '../App';
 
 describe('Testing FavoritePokemons Component', () => {
@@ -14,9 +13,7 @@ describe('Testing FavoritePokemons Component', () => {
   });
 
   test('if it contains the favorite pokemons', () => {
-    const history = createMemoryHistory();
-    render(<Router history={ history }><App /></Router>);
-
+    renderWithRouter(<App />);
     const moreDetailsLink = screen.getByRole('link', { name: 'More details' });
     userEvent.click(moreDetailsLink);
     const favoriteCheckbox = screen.getByRole('checkbox');
