@@ -10,6 +10,12 @@ Clone o repositório:
 git clone git@github.com:lramos33/project-react-tests.git
 ```
 
+Acesse a pasta do repositório
+
+```
+cd project-react-tests
+```
+
 Instale as dependências:
 ```
 npm install
